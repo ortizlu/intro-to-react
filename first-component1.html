@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Component 1</title>
+  <link rel="stylesheet" href="first-component.css">
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
@@ -14,18 +15,22 @@
   <script type="text/babel">
     class Pet extends React.Component {
       render() {
+        const liStyle = {
+          fontSize: "1.5em",
+          letterSpacing: "4px"
+        };
         return (
-          <div>
-            <h2>DOG</h2>
+          //babel doesn't know the difference between an HTML class and JS class, so babel uses className for any reserved
+          //keyword
+          <div className="card">
+            <h2 className="name">DOG</h2>
             <img src="https://storage.googleapis.com/nom-nom-now/images/breeds/dachshund.jpg" alt="doggy" />
-          </div>
-        )
-        // const h2 = ReactDOMFactories.h2(null, "Doggy");
-        // const img = ReactDOMFactories.img({
-        //   src: "https://storage.googleapis.com/nom-nom-now/images/breeds/dachshund.jpg",
-        //   alt: "Doggy"
-        // });
-        // return ReactDOMFactories.div(null, h2, img);
+            <h5 style={{fontSize: "2em", margin: "2px"}}>Hobbies:</h5>
+            <ul>
+              <li style={liStyle}>Sleep</li>
+              <li style={liStyle}>Eat</li>
+            </ul>
+          </div>);
       }
     }
 
